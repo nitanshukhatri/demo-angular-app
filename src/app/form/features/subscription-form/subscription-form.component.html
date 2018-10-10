@@ -1,0 +1,65 @@
+<div class="grid-container">
+  <div class="container">
+    <div fxLayout="row" fxLayoutAlign="center center" class="content">
+      <mat-toolbar>
+        <span>Subscription</span>
+      </mat-toolbar>
+      <div class="error-container">
+        <ul>
+          <li *ngFor="let error of errorList">{{error.value}}</li>
+        </ul>
+      </div>
+      <mat-card class="example-card">
+        <mat-card-header class="info-color white-text text-center py-4">
+          <h5>
+            <strong>Fill your subscription details</strong>
+          </h5>
+        </mat-card-header>
+        <!-- <mat-card-title>Subscription Details</mat-card-title> -->
+        <mat-card-content>
+          <div>
+            <form class="example-container" [formGroup]="subscriptionForm" #subscriptionNgForm="ngForm" fxLayout="column"
+              fxLayoutAlign="center center" fxLayoutGap="10px" (ngSubmit)="saveSubscriptionDetails(subscriptionNgForm)">
+              <mat-form-field>
+                <input type="email" matInput placeholder="Email" formControlName="email" [errorStateMatcher]="matcher">
+                <mat-error *ngIf="subscriptionForm.controls['email'].hasError('email') && !subscriptionForm.controls['email'].hasError('required')">
+                  Please enter a valid email address
+                </mat-error>
+                <mat-error *ngIf="subscriptionForm.controls['email'].hasError('required')">
+                  Email is <b>required</b>
+                </mat-error>
+              </mat-form-field>
+
+              <mat-form-field>
+                <input type="password" matInput placeholder="Password" formControlName="password">
+                <mat-error *ngIf="subscriptionForm.controls['password'].hasError('required')">Password
+                  is required.</mat-error>
+                <mat-error *ngIf="subscriptionForm.controls['password'].hasError('minlength')">
+                  Password must be at least 5 characters long.
+                </mat-error>
+              </mat-form-field>
+
+              <mat-form-field>
+
+                <mat-select placeholder="Select a Subscription" formControlName="subscriptionType">
+                  <mat-option value="basic">Basic</mat-option>
+                  <mat-option value="advanced">Advanced</mat-option>
+                </mat-select>
+                <mat-error *ngIf="subscriptionForm.controls['subscriptionType'].hasError('required')">Subscription Type
+                  is required.</mat-error>
+
+              </mat-form-field>
+
+              <mat-dialog-actions>
+                <button type="submit" mat-raised-button color="primary">Submit</button>
+
+                <button type="button" mat-button [routerLink]="['/form/exit']">Cancel</button>
+              </mat-dialog-actions>
+
+            </form>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

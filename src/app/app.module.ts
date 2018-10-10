@@ -4,18 +4,18 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HeaderComponent } from './header/header.component';
+
 import { LayoutModule } from '@angular/cdk/layout';
 import {
   MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule,
   MatGridListModule, MatCardModule, MatMenuModule, MatFormFieldModule
 } from '@angular/material';
 
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +29,8 @@ import {
     MatListModule,
     MatGridListModule,
     MatCardModule,
-    MatMenuModule
+    MatMenuModule,
+    FlexLayoutModule
 
   ],
   providers: [],

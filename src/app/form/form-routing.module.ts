@@ -4,6 +4,7 @@ import { FormComponent } from './form.component';
 import { SubscriptionFormComponent } from './features/subscription-form/subscription-form.component';
 import { CanDeactivateService } from '../core/contracts/can-deactivate.service';
 import { ExitComponent } from './features/exit/exit.component';
+import { ViewComponent } from './features/view/view.component';
 
 const routes: Routes = [
   {
@@ -12,6 +13,7 @@ const routes: Routes = [
     children: [
       { path: '', redirectTo: 'subscription', pathMatch: 'full' },
       { path: 'subscription', component: SubscriptionFormComponent, canDeactivate: [CanDeactivateService] },
+      { path: 'view', component: ViewComponent },
       { path: 'exit', component: ExitComponent }
     ],
 

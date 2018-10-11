@@ -7,6 +7,7 @@ import { FormComponent } from './form.component';
 import { MatCardModule, MatFormFieldModule, MatInputModule, MatToolbarModule, MatSelectModule, MatDialogModule, MatButtonModule } from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ExitComponent } from './features/exit/exit.component';
+import { ViewComponent } from './features/view/view.component';
 
 @NgModule({
   imports: [
@@ -24,7 +25,8 @@ import { ExitComponent } from './features/exit/exit.component';
   declarations: [
     FormComponent,
     SubscriptionFormComponent,
-    ExitComponent
+    ExitComponent,
+    ViewComponent
   ]
 })
 export class FormModule { }

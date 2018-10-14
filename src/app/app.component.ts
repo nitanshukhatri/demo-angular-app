@@ -21,16 +21,7 @@ export class AppComponent implements OnInit {
   constructor(private breakpointObserver: BreakpointObserver, private idbService: IndexedDbService, private data: DataService) { }
 
   ngOnInit() {
-
-
     this.userName = 'Test User';
-    this.idbService.setName('SubscriptionStore');
-
-    this.idbService.create([{
-      name: 'Subscriptions'
-    }]).subscribe(done2 => {
-      this.data.changeStatus(true);
-    });
 
   }
 

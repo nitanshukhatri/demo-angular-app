@@ -8,12 +8,7 @@ import { Validate } from '../../../core/models/validations';
 import { MatSnackBar } from '@angular/material';
 import { ToasterService } from 'src/app/core/services/toaster.service';
 
-export class MyErrorStateMatcher implements ErrorStateMatcher {
-  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-    const isSubmitted = form && form.submitted;
-    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
-  }
-}
+
 
 @Component({
   selector: 'app-subscription-form',
@@ -23,7 +18,6 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 
 export class SubscriptionFormComponent implements OnInit, CanComponentDeactivate {
   subscriptionForm: FormGroup;
-  matcher = new MyErrorStateMatcher();
   errorList = [];
 
   constructor(private browserService: BrowserDataService, public toasterService: ToasterService) { }
@@ -35,7 +29,6 @@ export class SubscriptionFormComponent implements OnInit, CanComponentDeactivate
       password: new FormControl('', [Validate.isEmpty('password'), Validators.minLength(5)]),
       subscriptionType: new FormControl('', [Validate.isEmpty('subscriptionType')])
     });
-    console.log(this.subscriptionForm);
 
   }
 
@@ -51,7 +44,7 @@ export class SubscriptionFormComponent implements OnInit, CanComponentDeactivate
         }
       }
     }
-    console.log(formRef);
+
   }
 
   canDeactivate() {

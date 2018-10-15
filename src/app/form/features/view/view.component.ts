@@ -25,10 +25,9 @@ export class ViewComponent implements OnInit, AfterViewInit {
   constructor(private browserService: BrowserDataService, private data: DataService) { }
 
   ngOnInit() {
-  allSubscriptions = this.browserService.getSubscription();
-  this.dataSource = new MatTableDataSource<any>(allSubscriptions);
-  this.dataSource.paginator = this.paginator;
-    console.log(allSubscriptions);
+    allSubscriptions = this.browserService.getSubscription();
+    this.dataSource = new MatTableDataSource<any>(allSubscriptions);
+    this.dataSource.paginator = this.paginator;
   }
 
   ngAfterViewInit() {

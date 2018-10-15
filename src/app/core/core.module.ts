@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ShowErrorsComponent } from './components/show-errors.component';
 import { MatFormFieldModule } from '@angular/material';
+import { ToasterService } from './services/toaster.service';
 
 
 @NgModule({
@@ -13,6 +14,7 @@ import { MatFormFieldModule } from '@angular/material';
     ShowErrorsComponent
   ],
   providers: [
+    ToasterService
   ],
   exports: [
     ShowErrorsComponent

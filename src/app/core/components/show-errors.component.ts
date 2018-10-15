@@ -14,7 +14,10 @@ export class ShowErrorsComponent implements OnInit {
 
   private static readonly errorMessages = {
     required: () => ValidationMessages.RequiredField,
-    email: () => ValidationMessages.IncorrectEmail,
+    email: () => ValidationMessages.email,
+    IncorrectEmail: () => ValidationMessages.IncorrectEmail,
+    subscriptionType: () => ValidationMessages.subscriptionType,
+    password: () => ValidationMessages.password,
     minlength: (params) => 'The min number of characters is ' + params.requiredLength,
     maxlength: (params) => 'The max allowed number of characters is ' + params.requiredLength,
     min: (params) => 'The min number of characters is ' + params.min,

@@ -7,6 +7,7 @@ import { BrowserDataService } from '../../../core/services/browser-data.service'
 import { Validate } from '../../../core/models/validations';
 import { MatSnackBar } from '@angular/material';
 import { ToasterService } from 'src/app/core/services/toaster.service';
+import { Router } from '@angular/router';
 
 
 
@@ -20,7 +21,9 @@ export class SubscriptionFormComponent implements OnInit, CanComponentDeactivate
   subscriptionForm: FormGroup;
   errorList = [];
 
-  constructor(private browserService: BrowserDataService, public toasterService: ToasterService) { }
+  constructor(private browserService: BrowserDataService,
+     public toasterService: ToasterService,
+     public router :Router) { }
 
   ngOnInit() {
 
@@ -33,9 +36,12 @@ export class SubscriptionFormComponent implements OnInit, CanComponentDeactivate
   }
 
   saveSubscriptionDetails(formRef) {
+    console.log(this.subscriptionForm);
     if (formRef.valid) {
       this.browserService.setSubscription(this.subscriptionForm.value);
       this.toasterService.showToaster('Your Subscription Saved Successfully');
+      formRef.resetForm();
+      this.router.navigate(['/form/view']);
     } else {
       for (const val in this.subscriptionForm.value) {
         if (this.subscriptionForm.value.hasOwnProperty(val)) {
